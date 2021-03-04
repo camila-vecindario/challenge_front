@@ -1,0 +1,20 @@
+@import "src/variables";
+
+.login {
+  @include page;
+
+  &__form {
+    margin: $margin-middle;
+  }
+
+  &__submit {
+    @include button;
+    background-color: $color-dark;
+    min-width: $min-width;
+    color: white;
+  }
+
+  &__signup {
+    color: $color-secondary;
+  }
+}

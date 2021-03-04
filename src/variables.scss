@@ -1,0 +1,42 @@
+$color-primary: #f8d408;
+$color-secondary: #e7333f;
+$color-tertiary: aquamarine;
+$color-dark: #1e242b;
+$color-gray: #efefef;
+
+$color-text-dark: #333;
+$color-text-light: rgba(255, 255, 255, 0.7);
+
+$elevation-color: rgba(0, 0, 0, 0.1);
+
+$padding-size: 20px;
+
+$margin-small: 10px;
+
+$margin-middle: 20px;
+
+$min-width: 300px;
+
+@mixin active-btn {
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin page {
+  padding: $padding-size;
+  height: 100%;
+}
+
+@mixin button {
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+
+  @include active-btn;
+}

@@ -1,7 +1,8 @@
+@import "variables";
+
 .App {
   text-align: center;
   height: 100vh;
   background-color: white;
-  min-width: 300px; }
-
-/*# sourceMappingURL=App.css.map */
+  min-width: $min-width;
+}
