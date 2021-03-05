@@ -7,7 +7,7 @@ Error: File to import not found or unreadable: src/variables.
 3: .login {
 4:   @include page;
 5: 
-6:   &__form {
+6:   display: flex;
 
 Backtrace:
 Login.scss:1
@@ -48,4 +48,4 @@ C:/RailsInstaller/Ruby2.3.3/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: src/variables.\A         on line 1 of Login.scss\A \A 1: @import \"src/variables\";\A 2: \A 3: .login {\A 4:   @include page;\A 5: \A 6:   &__form {"; }
+  content: "Error: File to import not found or unreadable: src/variables.\A         on line 1 of Login.scss\A \A 1: @import \"src/variables\";\A 2: \A 3: .login {\A 4:   @include page;\A 5: \A 6:   display: flex;"; }

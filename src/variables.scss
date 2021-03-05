@@ -9,6 +9,7 @@ $color-text-light: rgba(255, 255, 255, 0.7);
 
 $elevation-color: rgba(0, 0, 0, 0.1);
 
+$padding-small: 10px;
 $padding-size: 20px;
 
 $margin-small: 10px;
@@ -26,6 +27,7 @@ $min-width: 300px;
 @mixin page {
   padding: $padding-size;
   height: 100%;
+  text-align: center;
 }
 
 @mixin button {
@@ -39,4 +41,8 @@ $min-width: 300px;
   cursor: pointer;
 
   @include active-btn;
+
+  &[disabled=true] {
+    background-color: $color-gray;
+  }
 }
