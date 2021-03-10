@@ -4,8 +4,22 @@
   background-color: $color-gray;
   outline: none;
   border: none;
-  margin-bottom: $margin-middle;
   width: 100%;
   padding: $padding-small $padding-size;
   border-radius: 30px;
+  box-sizing: border-box;
+
+  &:focus {
+    border: lightskyblue 1px solid;
+  }
+
+  &__error {
+    color: #e7333f;
+    min-height: $margin-large;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: $padding-size;
+    width: 100%;
+  }
 }
+
