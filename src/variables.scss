@@ -33,12 +33,13 @@ $min-width: 300px;
 @mixin button {
   outline: none;
   border: none;
-  font-size: 1rem;
-  letter-spacing: 3px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 5px 20px;
   border-radius: 30px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   @include active-btn;
 

@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { HOST } from '../../constants/userConstants';
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: null,
-    role: 'HOST',
+    role: HOST,
   },
   reducers: {
     logged: (state, action) => {

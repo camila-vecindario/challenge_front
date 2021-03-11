@@ -1,0 +1,83 @@
+@import "src/variables";
+
+.project-card {
+  border: lightgray 1px solid;
+  margin: $margin-small;
+  width: 310px;
+
+  &__header {
+    padding: $padding-small $padding-size;
+    text-align: left;
+    margin-bottom: $margin-large;
+
+    & > b {
+      font-size: 0.9rem;
+      color: $color-text-dark;
+    }
+
+    & > p {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: darkgray;
+      margin-bottom: -7px;
+    }
+
+    & > span {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__text--city {
+    color: $color-primary;
+    font-weight: bolder;
+  }
+
+  &__cover {
+    width: 100%;
+    object-fit: cover;
+    margin-top: $margin-large;
+  }
+
+  &__content {
+    padding: $padding-small $padding-size $padding-size $padding-size;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $margin-middle;
+    }
+  }
+
+  &__feat {
+    width: 22%;
+
+    & > p {
+      font-size: 0.7rem;
+      word-wrap: break-word;
+      text-align: center;
+    }
+  }
+
+  &__icon {
+    color: $color-primary;
+  }
+
+  &__button {
+    @include button;
+    border: $color-primary 1px solid;
+    background-color: white;
+    color: $color-text-dark;
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  .project-card {
+    width: 100%;
+    min-width: 300px;
+  }
+}

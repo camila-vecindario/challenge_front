@@ -1,0 +1,11 @@
+@import "src/variables";
+
+.projects {
+  height: 100%;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    padding: $padding-size;
+  }
+}

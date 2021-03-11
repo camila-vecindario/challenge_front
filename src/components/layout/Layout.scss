@@ -28,11 +28,11 @@
   }
 
   &__btn--main {
-    background-color: $color-tertiary;
+    background-color: $color-primary;
     color: $color-dark;
 
     &:hover {
-      background-color: darken($color-tertiary, 15%);
+      background-color: lighten($color-primary, 15%);
     }
   }
 
@@ -47,7 +47,7 @@
 
 @media screen and (max-width: 700px){
   .nav {
-    &__btn {
+    &__btn, &__bar {
       display: none;
     }
 

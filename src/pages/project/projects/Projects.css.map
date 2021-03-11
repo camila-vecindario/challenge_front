@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;SAEU;EACR,MAAM,EAAE,IAAI;EAEZ;oBAAW;IACT,gBAAgB,EAAE,OAAO;IACzB,OAAO,EAAE,IAAI;IACb,eAAe,EAAE,MAAM",
+"sources": ["../../../../../../formaci%C3%B3n/challenge_client/src/pages/project/projects/Projects.scss"],
+"names": [],
+"file": "Projects.css"
+}
