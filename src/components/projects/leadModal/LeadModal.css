@@ -1,17 +1,16 @@
 /*
-Error: File to import not found or unreadable: ~bulma/sass/utilities/all.
-        on line 2 of App.scss
+Error: File to import not found or unreadable: src/variables.
+        on line 1 of LeadModal.scss
 
-1: @import "variables";
-2: @import "~bulma/sass/utilities/all";
-3: @import "~bulma/sass/components/modal";
-4: 
-5: .App {
-6:   text-align: center;
-7:   height: 100vh;
+1: @import "src/variables";
+2: 
+3: .lead-modal {
+4:   background-color: white;
+5:   border-radius: 5px;
+6:   padding: $padding-size;
 
 Backtrace:
-App.scss:2
+LeadModal.scss:1
 C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:67:in `rescue in import'
 C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:45:in `import'
 C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -49,4 +48,4 @@ C:/RailsInstaller/Ruby2.3.3/bin/sass:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bulma/sass/utilities/all.\A         on line 2 of App.scss\A \A 1: @import \"variables\";\A 2: @import \"~bulma/sass/utilities/all\";\A 3: @import \"~bulma/sass/components/modal\";\A 4: \A 5: .App {\A 6:   text-align: center;\A 7:   height: 100vh;"; }
+  content: "Error: File to import not found or unreadable: src/variables.\A         on line 1 of LeadModal.scss\A \A 1: @import \"src/variables\";\A 2: \A 3: .lead-modal {\A 4:   background-color: white;\A 5:   border-radius: 5px;\A 6:   padding: $padding-size;"; }

@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HOST } from '../../constants/userConstants';
 
+const mockUser = {
+  id: 1,
+  firstName: 'Juan',
+  lastName: 'Simulador',
+  email: 'juanitosimulando@gmail.com',
+};
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
