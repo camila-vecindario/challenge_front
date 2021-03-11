@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,aAAc;EACZ,gBAAgB,EAAE,OAAO",
+"sources": ["../../../../../../formaci%C3%B3n/challenge_client/src/components/users/userProfile/UserProfile.scss"],
+"names": [],
+"file": "UserProfile.css"
+}

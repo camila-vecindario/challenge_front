@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { HOST } from '../../constants/userConstants';
+import { CLIENT, HOST } from '../../constants/userConstants';
 
 const mockUser = {
   id: 1,
   firstName: 'Juan',
   lastName: 'Simulador',
   email: 'juanitosimulando@gmail.com',
+  picture: 'https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427_1280.jpg',
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: null,
-    role: HOST,
+    user: mockUser,
+    role: CLIENT,
   },
   reducers: {
     logged: (state, action) => {
@@ -20,6 +21,7 @@ export const userSlice = createSlice({
     },
     logOut: state => {
       state.user = null;
+      state.role = HOST;
     },
     updateRole: (state, action) => {
       state.role = action.payload;

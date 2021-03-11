@@ -34,7 +34,7 @@ const LeadModal = ({ visible, onClose }) => {
   const onSubmit = () => {
     setSuccess(true);
   };
-  console.log(user?.email || watch('email'), watch('email'));
+
   return (
     <Modal visible={visible} onClose={onClose}>
       <div className='lead-modal'>

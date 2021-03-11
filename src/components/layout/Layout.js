@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { selectCurrentRole } from '../../redux/selectors/userSelectors';
 import { useSelector } from 'react-redux';
 import { ADMIN, HOST, CLIENT } from '../../constants/userConstants';
+import { AdminBar, ClientBar } from '../users/userProfile/UserProfile';
 
 const Layout = ({ children }) => {
   const currentRole = useSelector(selectCurrentRole);
@@ -14,9 +15,11 @@ const Layout = ({ children }) => {
           Hola Pues
         </a>
         <div>
-          {currentRole === HOST && <HostBar />}
-          {currentRole === ADMIN && <AdminBar />}
-          {currentRole === CLIENT && <ClientBar />}
+          <div className='nav__bar'>
+            {currentRole === HOST && <HostBar />}
+            {currentRole === ADMIN && <AdminBar />}
+            {currentRole === CLIENT && <ClientBar />}
+          </div>
           <i className='fa fa-bars fa-3x nav__icon' />
         </div>
       </nav>
@@ -42,14 +45,6 @@ const HostBar = () => {
       </button>
     </>
   );
-};
-
-const AdminBar = () => {
-  return <h1 className='nav__bar'>Admin</h1>;
-};
-
-const ClientBar = () => {
-  return <h1 className='nav__bar'>Cliente</h1>;
 };
 
 export default Layout;
