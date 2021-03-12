@@ -3,6 +3,7 @@ import Input from '../../components/inputs/Input';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { R_HOME } from '../../constants/routes';
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('El nombre es requerido.'),
@@ -59,7 +60,7 @@ const SignUp = () => {
           </button>
         </form>
       </div>
-      <a href='/'>Volver</a>
+      <a href={R_HOME}>Volver</a>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CLIENT, HOST } from '../../constants/userConstants';
+import { ADMIN, HOST } from '../../constants/userConstants';
 
 const mockUser = {
   id: 1,
@@ -13,7 +13,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: mockUser,
-    role: CLIENT,
+    role: ADMIN,
   },
   reducers: {
     logged: (state, action) => {

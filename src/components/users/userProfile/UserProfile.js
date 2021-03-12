@@ -6,6 +6,8 @@ import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/us
 import { Popover } from 'react-tiny-popover';
 import { userRoles } from '../../../constants/userConstants';
 import { logOut } from '../../../redux/slices/userSlice';
+import ProjectsSearch from '../../projects/projectsSearch/ProjectsSearch';
+import { R_HOME } from '../../../constants/routes';
 
 const UserProfile = () => {
   let history = useHistory();
@@ -22,16 +24,14 @@ const UserProfile = () => {
 
   const handleSignOut = () => {
     dispatch(logOut());
-    history.push('/');
+    history.push(R_HOME);
   };
 
   return (
     <div className='user-profile'>
       <img className='user-profile__picture' alt='user' src={user.picture} />
       <div className='user-profile__info'>
-        <b>
-          {user.firstName} {user.lastName}
-        </b>
+        <b>{user.firstName}</b>
         <p>{user.email}</p>
         <p>{userRoles[role].value}</p>
       </div>
@@ -66,7 +66,8 @@ const UserProfile = () => {
 
 export const AdminBar = () => {
   return (
-    <div>
+    <div className='admin-bar'>
+      <ProjectsSearch />
       <UserProfile />
     </div>
   );

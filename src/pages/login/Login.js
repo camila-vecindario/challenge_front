@@ -5,6 +5,7 @@ import { login } from '../../services/auth.services';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { R_SIGN_UP, R_HOME } from '../../constants/routes';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -44,17 +45,17 @@ const Login = () => {
             errors={errors}
           />
           <button className='login__submit' type='submit' disabled={loading}>
-            Ingresar
+            {loading ? 'Cargando...' : 'Ingresar'}
           </button>
         </form>
       </div>
       <p>
         ¿No tienes una cuenta?{' '}
-        <a href='/sign-up' className='login__signup'>
-          {loading ? 'Cargando...' : 'Regístrate'}
+        <a href={R_SIGN_UP} className='login__signup'>
+          Regístrate
         </a>
       </p>
-      <a href='/'>Inicio</a>
+      <a href={R_HOME}>Inicio</a>
     </div>
   );
 };
