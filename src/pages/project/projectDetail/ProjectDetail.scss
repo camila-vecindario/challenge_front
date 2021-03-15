@@ -1,0 +1,42 @@
+@import "src/variables";
+
+.project-detail {
+  height: 100%;
+  display: flex;
+
+  &__menu {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    text-align: left;
+    border-right: $color-gray 1px solid;
+
+    & > h3 {
+      margin-bottom: $margin-small;
+    }
+  }
+
+  &__menu-item {
+
+    & > a {
+      padding: $padding-small $padding-size;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      text-align: right;
+    }
+  }
+
+  &__active {
+    & > i, & > p {
+      color: $color-link !important;
+    }
+  }
+
+  &__content {
+    flex: 3;
+    min-width: $min-width;
+    padding: 0 $padding-size;
+  }
+}

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/userSelectors';
 import { Popover } from 'react-tiny-popover';
-import { userRoles } from '../../../constants/userConstants';
+import { ADMIN, userRoles } from '../../../constants/userConstants';
 import { logOut } from '../../../redux/slices/userSlice';
 import ProjectsSearch from '../../projects/projectsSearch/ProjectsSearch';
 import { R_HOME } from '../../../constants/routes';
@@ -21,6 +21,8 @@ const UserProfile = () => {
   const handleOpenOptions = () => setOpenOptions(!openOptions);
 
   const handleAccount = () => {};
+
+  const handleUsers = () => {};
 
   const handleSignOut = () => {
     dispatch(logOut());
@@ -45,6 +47,12 @@ const UserProfile = () => {
               <i className='fal fa-user-circle fa-1x' />
               <p>Cuenta</p>
             </div>
+            {role === ADMIN && (
+              <div className='user-profile__option' onClick={handleUsers}>
+                <i className='fal fa-user-friends fa-1x' />
+                <p>Usuarios</p>
+              </div>
+            )}
             <div className='user-profile__option' onClick={handleSignOut}>
               <i className='fal fa-sign-out-alt fa-1x' />
               <p>Cerrar sesión</p>

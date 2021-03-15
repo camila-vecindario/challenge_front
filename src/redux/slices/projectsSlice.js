@@ -10,6 +10,7 @@ const projects = [
     address: 'Cra 46 #25-10',
     price: 157500000,
     builtArea: 258.75,
+    privateArea: 30.18,
     hasVis: false,
     bathrooms: 2,
     hasParking: false,
@@ -32,10 +33,10 @@ export const projectsSlice = createSlice({
     add: (state, action) => {
       state.list = [action.payload, ...state.list];
     },
-    updateCurrent: (state, action) => {
-      state.currentProject = state.list.find(project => project.id === action.payload);
+    updateCurrentProject: (state, action) => {
+      state.currentProject = action.payload;
     },
-    deleteCurrent: state => {
+    deleteCurrentProject: state => {
       state.currentProject = null;
     },
     loadLeads: (state, action) => {
@@ -44,6 +45,12 @@ export const projectsSlice = createSlice({
   },
 });
 
-export const { add, deleteCurrent, load, loadLeads, updateCurrent } = projectsSlice.actions;
+export const {
+  add,
+  deleteCurrentProject,
+  load,
+  loadLeads,
+  updateCurrentProject,
+} = projectsSlice.actions;
 
 export default projectsSlice.reducer;

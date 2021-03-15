@@ -13,6 +13,7 @@ import {
   R_NOT_FOUND,
 } from './constants/routes';
 import ProjectForm from './pages/project/projectForm/ProjectForm';
+import ProjectDetail from './pages/project/projectDetail/ProjectDetail';
 
 function App() {
   return (
@@ -31,8 +32,8 @@ function App() {
           <PrivateRoute exact path={R_CREATE_PROJECT}>
             <ProjectForm />
           </PrivateRoute>
-          <PrivateRoute exact path={R_PROJECT_DETAIL}>
-            <h1>Proyecto 1</h1>
+          <PrivateRoute path={R_PROJECT_DETAIL}>
+            <ProjectDetail />
           </PrivateRoute>
           <Route path={R_NOT_FOUND}>
             <h1>Página no encontrada</h1>
