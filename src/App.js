@@ -12,6 +12,7 @@ import {
   R_PROJECT_DETAIL,
   R_NOT_FOUND,
 } from './constants/routes';
+import ProjectForm from './pages/project/projectForm/ProjectForm';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
             <SignUp />
           </Route>
           <PrivateRoute exact path={R_CREATE_PROJECT}>
-            <h1>Crear proyecto</h1>
+            <ProjectForm />
           </PrivateRoute>
           <PrivateRoute exact path={R_PROJECT_DETAIL}>
             <h1>Proyecto 1</h1>
