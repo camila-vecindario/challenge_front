@@ -1,4 +1,5 @@
 import './ProjectForm.scss';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLoggedUser } from '../../../redux/selectors/userSelectors';
 import Input from '../../../components/inputs/Input';
@@ -7,25 +8,33 @@ import { projectTypes } from '../../../constants/projectsConstants';
 import Layout from '../../../components/layout/Layout';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import {
+  REQUIRED_PROJECT_NAME_ERROR,
+  REQUIRED_ADDRESS_ERROR,
+  REQUIRED_BUILT_AREA_ERROR,
+  REQUIRED_PRIVATE_AREA_ERROR,
+  REQUIRED_BATHROOMS_ERROR,
+  NUMBER_TYPE_ERROR,
+  POSITIVE_NUMBER_ERROR,
+  INTEGER_NUMBER_ERROR,
+} from '../../../constants/errorsMessages';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('El nombre es requerido'),
-  address: Yup.string().required('La dirección es requerida'),
+  name: Yup.string().required(REQUIRED_PROJECT_NAME_ERROR),
+  address: Yup.string().required(REQUIRED_ADDRESS_ERROR),
   built_area: Yup.number()
-    .required('Debes especificar el área construida')
-    .positive()
-    .integer()
-    .typeError('El valor debe ser numérico'),
+    .required(REQUIRED_BUILT_AREA_ERROR)
+    .positive(POSITIVE_NUMBER_ERROR)
+    .typeError(NUMBER_TYPE_ERROR),
   private_area: Yup.number()
-    .required('Debes especificar el área privada')
-    .positive()
-    .integer()
-    .typeError('El valor debe ser numérico'),
+    .required(REQUIRED_PRIVATE_AREA_ERROR)
+    .positive(POSITIVE_NUMBER_ERROR)
+    .typeError(NUMBER_TYPE_ERROR),
   bathrooms: Yup.number()
-    .required('Debes especificar el número de baños')
-    .positive()
-    .integer()
-    .typeError('El valor debe ser numérico'),
+    .required(REQUIRED_BATHROOMS_ERROR)
+    .positive(POSITIVE_NUMBER_ERROR)
+    .integer(INTEGER_NUMBER_ERROR)
+    .typeError(NUMBER_TYPE_ERROR),
   sales_room_emails: Yup.string(),
 });
 

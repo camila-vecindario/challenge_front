@@ -1,10 +1,11 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectLoggedUser } from '../../redux/selectors/userSelectors';
+import { getFromLocalStorage } from '../../helpers/utils';
 
 const PrivateRoute = ({ children, ...rest }) => {
   const user = useSelector(selectLoggedUser);
-  const token = localStorage.getItem('token');
+  const token = getFromLocalStorage('token');
 
   const logged = user || token;
 

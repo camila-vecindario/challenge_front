@@ -1,11 +1,11 @@
 import './ProjectDetail.scss';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { useParams, useRouteMatch, Route, Switch, NavLink } from 'react-router-dom';
 import Layout from '../../../components/layout/Layout';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentProject, selectProjects } from '../../../redux/selectors/projectsSelectors';
 import { updateCurrentProject } from '../../../redux/slices/projectsSlice';
-import { R_PROJECT_LEADS } from '../../../constants/routes';
+import { PROJECT_LEADS_ROUTE } from '../../../constants/routes';
 import ProjectLeads from '../projectLeads/ProjectLeads';
 import ProjectInfo from '../projectInfo/projectInfo';
 
@@ -18,9 +18,9 @@ const ProjectDetail = () => {
   const project = useSelector(selectCurrentProject);
 
   useEffect(() => {
-    const project = projects.find(pro => pro.id.toString() === projectId);
-    if (project) {
-      dispatch(updateCurrentProject(project));
+    const currentProject = projects.find(project => project.id.toString() === projectId);
+    if (currentProject) {
+      dispatch(updateCurrentProject(currentProject));
     }
   }, [projectId, projects, dispatch]);
 
@@ -30,14 +30,14 @@ const ProjectDetail = () => {
         <div className='project-detail__menu'>
           <h3>{project?.name}</h3>
           <MenuItem to={url} title='Información general' icon='project-diagram' />
-          <MenuItem to={`${url}${R_PROJECT_LEADS}`} title='Leads' icon='users' />
+          <MenuItem to={`${url}${PROJECT_LEADS_ROUTE}`} title='Leads' icon='users' />
         </div>
         <div className='project-detail__content'>
           <Switch>
             <Route exact path={path}>
               <ProjectInfo />
             </Route>
-            <Route exact path={`${path}${R_PROJECT_LEADS}`}>
+            <Route exact path={`${path}${PROJECT_LEADS_ROUTE}`}>
               <ProjectLeads />
             </Route>
           </Switch>
@@ -47,15 +47,13 @@ const ProjectDetail = () => {
   );
 };
 
-const MenuItem = ({ to, icon, title }) => {
-  return (
-    <div className='project-detail__menu-item'>
-      <NavLink exact to={to} activeClassName='project-detail__active'>
-        <i className={`fa fa-${icon} fa-1x`} />
-        <p>{title}</p>
-      </NavLink>
-    </div>
-  );
-};
+const MenuItem = memo(({ to, icon, title }) => (
+  <div className='project-detail__menu-item'>
+    <NavLink exact to={to} activeClassName='project-detail__active'>
+      <i className={`fa fa-${icon} fa-1x`} />
+      <p>{title}</p>
+    </NavLink>
+  </div>
+));
 
 export default ProjectDetail;

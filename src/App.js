@@ -5,12 +5,12 @@ import Login from './pages/login/Login';
 import SignUp from './pages/signUp/SignUp';
 import PrivateRoute from './components/privateRoute/PrivateRoute';
 import {
-  R_HOME,
-  R_LOGIN,
-  R_SIGN_UP,
-  R_CREATE_PROJECT,
-  R_PROJECT_DETAIL,
-  R_NOT_FOUND,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  SIGN_UP__ROUTE,
+  CREATE_PROJECT_ROUTE,
+  PROJECT_DETAIL_ROUTE,
+  NOT_FOUND_ROUTE,
 } from './constants/routes';
 import ProjectForm from './pages/project/projectForm/ProjectForm';
 import ProjectDetail from './pages/project/projectDetail/ProjectDetail';
@@ -20,22 +20,22 @@ function App() {
     <div className='App'>
       <Router>
         <Switch>
-          <Route exact path={R_HOME}>
+          <Route exact path={HOME_ROUTE}>
             <Projects />
           </Route>
-          <Route exact path={R_LOGIN}>
+          <Route exact path={LOGIN_ROUTE}>
             <Login />
           </Route>
-          <Route exact path={R_SIGN_UP}>
+          <Route exact path={SIGN_UP__ROUTE}>
             <SignUp />
           </Route>
-          <PrivateRoute exact path={R_CREATE_PROJECT}>
+          <PrivateRoute exact path={CREATE_PROJECT_ROUTE}>
             <ProjectForm />
           </PrivateRoute>
-          <PrivateRoute path={R_PROJECT_DETAIL}>
+          <PrivateRoute path={PROJECT_DETAIL_ROUTE}>
             <ProjectDetail />
           </PrivateRoute>
-          <Route path={R_NOT_FOUND}>
+          <Route path={NOT_FOUND_ROUTE}>
             <h1>Página no encontrada</h1>
           </Route>
         </Switch>

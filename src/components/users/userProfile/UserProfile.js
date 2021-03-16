@@ -7,10 +7,10 @@ import { Popover } from 'react-tiny-popover';
 import { ADMIN, userRoles } from '../../../constants/userConstants';
 import { logOut } from '../../../redux/slices/userSlice';
 import ProjectsSearch from '../../projects/projectsSearch/ProjectsSearch';
-import { R_HOME } from '../../../constants/routes';
+import { HOME_ROUTE } from '../../../constants/routes';
 
 const UserProfile = () => {
-  let history = useHistory();
+  const history = useHistory();
   const [openOptions, setOpenOptions] = useState(false);
 
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   const handleSignOut = () => {
     dispatch(logOut());
-    history.push(R_HOME);
+    history.push(HOME_ROUTE);
   };
 
   return (

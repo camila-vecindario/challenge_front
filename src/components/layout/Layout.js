@@ -4,7 +4,7 @@ import { selectCurrentRole } from '../../redux/selectors/userSelectors';
 import { useSelector } from 'react-redux';
 import { ADMIN, HOST, CLIENT } from '../../constants/userConstants';
 import { AdminBar, ClientBar } from '../users/userProfile/UserProfile';
-import { R_SIGN_UP, R_LOGIN, R_HOME } from '../../constants/routes';
+import { SIGN_UP__ROUTE, LOGIN_ROUTE, HOME_ROUTE } from '../../constants/routes';
 
 const Layout = ({ children }) => {
   const currentRole = useSelector(selectCurrentRole);
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <nav className='nav'>
-        <a href={R_HOME} className='nav__logo'>
+        <a href={HOME_ROUTE} className='nav__logo'>
           Hola Pues
         </a>
         <div>
@@ -30,11 +30,11 @@ const Layout = ({ children }) => {
 };
 
 const HostBar = () => {
-  let history = useHistory();
+  const history = useHistory();
 
-  const handleSignUp = () => history.push(R_SIGN_UP);
+  const handleSignUp = () => history.push(SIGN_UP__ROUTE);
 
-  const handleLogin = () => history.push(R_LOGIN);
+  const handleLogin = () => history.push(LOGIN_ROUTE);
 
   return (
     <>

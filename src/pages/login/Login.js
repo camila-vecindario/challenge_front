@@ -5,13 +5,16 @@ import { login } from '../../services/auth.services';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { R_SIGN_UP, R_HOME } from '../../constants/routes';
+import { SIGN_UP__ROUTE, HOME_ROUTE } from '../../constants/routes';
+import {
+  EMAIL_ERROR,
+  REQUIRED_EMAIL_ERROR,
+  REQUIRED_PASSWORD_ERROR,
+} from '../../constants/errorsMessages';
 
 const schema = Yup.object().shape({
-  email: Yup.string()
-    .email('El correo electrónico ingresado no es válido')
-    .required('El correo es requerido.'),
-  password: Yup.string().required('La contraseña es requerida.'),
+  email: Yup.string().email(EMAIL_ERROR).required(REQUIRED_EMAIL_ERROR),
+  password: Yup.string().required(REQUIRED_PASSWORD_ERROR),
 });
 
 const Login = () => {
@@ -51,11 +54,11 @@ const Login = () => {
       </div>
       <p>
         ¿No tienes una cuenta?{' '}
-        <a href={R_SIGN_UP} className='login__signup'>
+        <a href={SIGN_UP__ROUTE} className='login__signup'>
           Regístrate
         </a>
       </p>
-      <a href={R_HOME}>Inicio</a>
+      <a href={HOME_ROUTE}>Inicio</a>
     </div>
   );
 };

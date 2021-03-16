@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Popover } from 'react-tiny-popover';
 import { useSelector } from 'react-redux';
 import { selectProjectsName } from '../../../redux/selectors/projectsSelectors';
-import { R_CREATE_PROJECT, R_PROJECTS } from '../../../constants/routes';
+import { CREATE_PROJECT_ROUTE, PROJECTS_ROUTE } from '../../../constants/routes';
 
 const ProjectsSearch = () => {
   let history = useHistory();
@@ -15,11 +15,11 @@ const ProjectsSearch = () => {
   const handleOpen = () => setOpen(!open);
 
   const handleCreation = () => {
-    history.push(R_CREATE_PROJECT);
+    history.push(CREATE_PROJECT_ROUTE);
   };
 
   const handleProject = id => {
-    history.push(`${R_PROJECTS}/${id}`);
+    history.push(`${PROJECTS_ROUTE}/${id}`);
   };
 
   return (

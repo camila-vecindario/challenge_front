@@ -3,19 +3,27 @@ import Input from '../../components/inputs/Input';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { R_HOME } from '../../constants/routes';
+import { HOME_ROUTE } from '../../constants/routes';
+import {
+  REQUIRED_FIRST_NAME_ERROR,
+  REQUIRED_LAST_NAME_ERROR,
+  EMAIL_ERROR,
+  REQUIRED_EMAIL_ERROR,
+  REQUIRED_PHONE_ERROR,
+  REQUIRED_PASSWORD_ERROR,
+  REQUIRED_CONFIRM_PASSWORD_ERROR,
+  NOT_MATCH_PASSWORDS_ERROR,
+} from '../../constants/errorsMessages';
 
 const schema = Yup.object().shape({
-  firstName: Yup.string().required('El nombre es requerido.'),
-  lastName: Yup.string().required('El apellido es requerido.'),
-  email: Yup.string()
-    .email('La dirección de correo electrónico ingresada no es válida.')
-    .required('El correo electrónico es requerido.'),
-  phone: Yup.string().required('El teléfono es requerido.'),
-  password: Yup.string().required('La contraseña es requerida.'),
+  firstName: Yup.string().required(REQUIRED_FIRST_NAME_ERROR),
+  lastName: Yup.string().required(REQUIRED_LAST_NAME_ERROR),
+  email: Yup.string().email(EMAIL_ERROR).required(REQUIRED_EMAIL_ERROR),
+  phone: Yup.string().required(REQUIRED_PHONE_ERROR),
+  password: Yup.string().required(REQUIRED_PASSWORD_ERROR),
   passwordConfirm: Yup.string()
-    .required('Es necesario ingresar nuevamente la contraseña.')
-    .oneOf([Yup.ref('password')], 'Las contraseñas no coinciden'),
+    .required(REQUIRED_CONFIRM_PASSWORD_ERROR)
+    .oneOf([Yup.ref('password')], NOT_MATCH_PASSWORDS_ERROR),
 });
 
 const SignUp = () => {
@@ -60,7 +68,7 @@ const SignUp = () => {
           </button>
         </form>
       </div>
-      <a href={R_HOME}>Volver</a>
+      <a href={HOME_ROUTE}>Volver</a>
     </div>
   );
 };
