@@ -3,6 +3,7 @@
 .project-detail {
   height: 100%;
   display: flex;
+  @include page;
 
   &__menu {
     flex: 1;
@@ -37,6 +38,7 @@
   &__content {
     flex: 3;
     min-width: $min-width;
-    padding: 0 $padding-size;
+    padding: $padding-size;
+    background-color: lighten($color-dark, 83%);
   }
 }

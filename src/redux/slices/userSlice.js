@@ -7,6 +7,7 @@ const mockUser = {
   lastName: 'Simulador',
   email: 'juanitosimulando@gmail.com',
   picture: 'https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427_1280.jpg',
+  phone: '321 745 6359',
 };
 
 export const userSlice = createSlice({

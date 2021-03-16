@@ -1,5 +1,4 @@
 import './ProjectForm.scss';
-import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLoggedUser } from '../../../redux/selectors/userSelectors';
 import Input from '../../../components/inputs/Input';
