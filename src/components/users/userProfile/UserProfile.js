@@ -7,7 +7,7 @@ import { Popover } from 'react-tiny-popover';
 import { ADMIN, userRoles } from '../../../constants/userConstants';
 import { logOut } from '../../../redux/slices/userSlice';
 import ProjectsSearch from '../../projects/projectsSearch/ProjectsSearch';
-import { HOME_ROUTE } from '../../../constants/routes';
+import { ACCOUNT_ROUTE, HOME_ROUTE } from '../../../constants/routes';
 
 const UserProfile = () => {
   const history = useHistory();
@@ -20,7 +20,9 @@ const UserProfile = () => {
 
   const handleOpenOptions = () => setOpenOptions(!openOptions);
 
-  const handleAccount = () => {};
+  const handleAccount = () => {
+    history.push(ACCOUNT_ROUTE);
+  };
 
   const handleUsers = () => {};
 

@@ -11,9 +11,11 @@ import {
   CREATE_PROJECT_ROUTE,
   PROJECT_DETAIL_ROUTE,
   NOT_FOUND_ROUTE,
+  ACCOUNT_ROUTE,
 } from './constants/routes';
 import ProjectForm from './pages/project/projectForm/ProjectForm';
 import ProjectDetail from './pages/project/projectDetail/ProjectDetail';
+import UserAccount from './pages/user/userAccount/UserAccount';
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
           </Route>
           <Route exact path={SIGN_UP__ROUTE}>
             <SignUp />
+          </Route>
+          <Route exact path={ACCOUNT_ROUTE}>
+            <UserAccount />
           </Route>
           <PrivateRoute exact path={CREATE_PROJECT_ROUTE}>
             <ProjectForm />

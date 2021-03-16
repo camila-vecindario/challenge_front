@@ -2,6 +2,7 @@
 export const HOME_ROUTE = '/';
 export const SIGN_UP__ROUTE = '/sign-up';
 export const LOGIN_ROUTE = '/login';
+export const ACCOUNT_ROUTE = '/account';
 
 /* Projects */
 export const PROJECTS_ROUTE = '/projects';
