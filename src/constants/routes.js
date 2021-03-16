@@ -1,14 +1,14 @@
 /* Users */
-export const R_HOME = '/';
-export const R_SIGN_UP = '/sign-up';
-export const R_LOGIN = '/login';
+export const HOME_ROUTE = '/';
+export const SIGN_UP__ROUTE = '/sign-up';
+export const LOGIN_ROUTE = '/login';
 
 /* Projects */
-export const R_PROJECTS = '/projects';
-export const R_CREATE_PROJECT = '/projects/create';
-export const R_PROJECT_DETAIL = '/projects/:projectId';
-export const R_PROJECT_LEADS = '/leads';
+export const PROJECTS_ROUTE = '/projects';
+export const CREATE_PROJECT_ROUTE = '/projects/create';
+export const PROJECT_DETAIL_ROUTE = '/projects/:projectId';
+export const PROJECT_LEADS_ROUTE = '/leads';
 
 /* General */
-export const R_NOT_FOUND = '*';
-export const R_UNAUTHORIZED = '/unauthorized';
+export const NOT_FOUND_ROUTE = '*';
+export const UNAUTHORIZED_ROUTE = '/unauthorized';
