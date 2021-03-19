@@ -1,0 +1,59 @@
+@import "src/variables";
+
+.nav {
+  background-color: white;
+  min-height: 80px;
+  box-shadow: 2px 2px 8px $elevation-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $padding-size;
+
+  &__logo {
+    text-decoration: none;
+    color: $color-text-dark;
+    font-weight: bold;
+    font-size: 1.4rem;
+    @include active-btn;
+  }
+
+  &__btn {
+    @include button;
+    margin-left: $margin-middle;
+    background-color: lighten($color-gray, 90%);
+
+    &:hover {
+      background-color: $color-gray;
+    }
+  }
+
+  &__btn--main {
+    background-color: $color-primary;
+    color: $color-dark;
+
+    &:hover {
+      background-color: lighten($color-primary, 15%);
+    }
+  }
+
+  &__icon {
+    display: none;
+    cursor: pointer;
+  }
+}
+
+.layout__content {
+  padding: $padding-size;
+}
+
+@media screen and (max-width: 700px){
+  .nav {
+    &__btn, &__bar {
+      display: none;
+    }
+
+    &__icon {
+      display: block;
+    }
+  }
+}

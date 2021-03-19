@@ -1,0 +1,23 @@
+@import "src/variables";
+
+.lead-modal {
+  background-color: white;
+  border-radius: 5px;
+  padding: $padding-size;
+
+  &--new {
+    background-color: lighten($color-primary, 20%);
+  }
+
+  &__img {
+    width: 25%;
+  }
+
+  &__title {
+    color: $color-text-dark;
+
+    &:last-of-type {
+      margin-bottom: $margin-small;
+    }
+  }
+}

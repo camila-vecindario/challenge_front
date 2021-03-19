@@ -1,0 +1,50 @@
+$color-primary: #f8d408;
+$color-secondary: #e7333f;
+$color-tertiary: aquamarine;
+$color-dark: #1e242b;
+$color-gray: #efefef;
+$color-link: #21c2de;
+
+$color-text-dark: #333;
+$color-text-light: rgba(255, 255, 255, 0.7);
+
+$elevation-color: rgba(0, 0, 0, 0.1);
+
+$padding-small: 10px;
+$padding-size: 20px;
+
+$margin-small: 10px;
+$margin-middle: 20px;
+$margin-large: 25px;
+
+$min-width: 300px;
+
+@mixin active-btn {
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin page {
+  padding: $padding-size;
+  height: 100%;
+  text-align: center;
+}
+
+@mixin button {
+  outline: none;
+  border: none;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  padding: 5px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  @include active-btn;
+
+  &[disabled=true] {
+    background-color: $color-gray;
+  }
+}
