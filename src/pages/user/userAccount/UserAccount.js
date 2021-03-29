@@ -1,7 +1,7 @@
+import './UserAccount.scss';
 import Layout from '../../../components/layout/Layout';
 import { useSelector } from 'react-redux';
 import { selectLoggedUser } from '../../../redux/selectors/userSelectors';
-import './UserAccount.scss';
 
 const UserAccount = () => {
   const user = useSelector(selectLoggedUser);
