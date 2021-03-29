@@ -30,4 +30,3 @@ yarn-error.log*
 .sass-cache
 *.css
 *.css.map
-*css

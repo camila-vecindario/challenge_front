@@ -1,0 +1,17 @@
+@import "src/variables";
+
+.table {
+  width: 100%;
+  border-spacing: 15px 0;
+
+  & td {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  & img, & div {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
