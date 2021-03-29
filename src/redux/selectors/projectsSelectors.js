@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 
 export const selectProjects = state => state.projects.list;
 
+export const selectFilter = state => state.projects.filter;
+
 export const selectProjectsName = createSelector(
   state => state.projects.list,
   projects =>
