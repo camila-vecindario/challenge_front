@@ -44,7 +44,8 @@ $min-width: 300px;
 
   @include active-btn;
 
-  &[disabled=true] {
+  &:disabled {
     background-color: $color-gray;
+    color: $color-text-dark;
   }
 }

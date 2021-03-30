@@ -20,4 +20,10 @@
       margin-bottom: $margin-small;
     }
   }
+
+  button[type="submit"] {
+    @include button;
+
+    background-color: $color-primary;
+  }
 }

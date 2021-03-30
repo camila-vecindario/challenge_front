@@ -14,3 +14,19 @@ export async function getData(url, abortController) {
 
   return Promise.resolve(data);
 }
+
+export async function postData(url, body) {
+  const response = await fetch(`${process.env.REACT_APP_SERVER}${url}`, {
+    method: 'POST',
+    headers: authHeader(),
+    body: JSON.stringify(body),
+  });
+
+  const data = await response.json();
+
+  if (response.status === 400) {
+    return Promise.reject(data);
+  }
+
+  return Promise.resolve(data);
+}

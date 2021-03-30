@@ -28,7 +28,16 @@
     @include active-btn;
 
     &:hover {
-      border-color: $color-text-dark;
+      border: none;
+    }
+
+    &--active {
+      transform: scale(0.90);
+      border: none;
+
+      i, b {
+        color: white;
+      }
     }
   }
 }

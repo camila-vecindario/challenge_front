@@ -6,16 +6,17 @@ import { selectLoggedUser } from '../../../redux/selectors/userSelectors';
 const UserAccount = () => {
   const user = useSelector(selectLoggedUser);
 
-  const firstName = user?.firstName || '';
-  const lastName = user?.lastName || '';
+  const firstName = user?.first_name || '';
+  const lastName = user?.last_name || '';
   const email = user?.email || '';
   const phone = user?.phone || '';
+  const picture = user?.picture;
 
   return (
     <Layout>
       <div className='user-account'>
-        {user.picture ? (
-          <img src={user.picture} alt={firstName} className='user-account__picture' />
+        {picture ? (
+          <img src={picture} alt={firstName} className='user-account__picture' />
         ) : (
           <div className='user-account__picture'>
             <h1>

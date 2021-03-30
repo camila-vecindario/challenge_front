@@ -17,23 +17,26 @@ const ProjectsHeader = () => {
 
   return (
     <div className='projects-header'>
-      {types.map(type => (
-        <button
-          key={`project-type-${type}`}
-          className='projects-header__button'
-          onClick={() => handleClick(projectTypes[type].id)}
-          style={{
-            borderColor: currentFilter === projectTypes[type].id && projectTypes[type].color,
-            borderWidth: 2,
-          }}
-        >
-          <i
-            className={`fal ${projectTypes[type].icon} fa-2x`}
-            style={{ color: projectTypes[type].color }}
-          />
-          <b>{projectTypes[type].value}</b>
-        </button>
-      ))}
+      {types.map(type => {
+        const isCurrent = currentFilter === projectTypes[type].id;
+
+        return (
+          <button
+            key={`project-type-${type}`}
+            className={`projects-header__button ${isCurrent && 'projects-header__button--active'}`}
+            onClick={() => handleClick(projectTypes[type].id)}
+            style={{
+              backgroundColor: isCurrent && projectTypes[type].color,
+            }}
+          >
+            <i
+              className={`fal ${projectTypes[type].icon} fa-2x`}
+              style={{ color: isCurrent ? 'white' : projectTypes[type].color }}
+            />
+            <b>{projectTypes[type].value}</b>
+          </button>
+        );
+      })}
     </div>
   );
 };

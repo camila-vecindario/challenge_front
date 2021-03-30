@@ -1,4 +1,5 @@
 import './App.scss';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Projects from './pages/project/projects/Projects';
 import Login from './pages/login/Login';
@@ -16,8 +17,21 @@ import {
 import ProjectForm from './pages/project/projectForm/ProjectForm';
 import ProjectDetail from './pages/project/projectDetail/ProjectDetail';
 import UserAccount from './pages/user/userAccount/UserAccount';
+import { getFromLocalStorage, resolveUserRole } from './helpers/utils';
+import { useDispatch } from 'react-redux';
+import { logged, updateRole } from './redux/slices/userSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const user = JSON.parse(getFromLocalStorage('user'));
+    const role = resolveUserRole();
+
+    dispatch(logged(user));
+    dispatch(updateRole(role));
+  }, [dispatch]);
+
   return (
     <div className='App'>
       <Router>

@@ -4,10 +4,11 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/userSelectors';
 import { Popover } from 'react-tiny-popover';
-import { ADMIN, userRoles } from '../../../constants/userConstants';
+import { ADMIN, userRoles, DEFAULT_PICTURE } from '../../../constants/userConstants';
 import { logOut } from '../../../redux/slices/userSlice';
 import ProjectsSearch from '../../projects/projectsSearch/ProjectsSearch';
 import { ACCOUNT_ROUTE, HOME_ROUTE } from '../../../constants/routes';
+import { signOut, redirect } from '../../../helpers/utils';
 
 const UserProfile = () => {
   const history = useHistory();
@@ -28,12 +29,13 @@ const UserProfile = () => {
 
   const handleSignOut = () => {
     dispatch(logOut());
-    history.push(HOME_ROUTE);
+    signOut();
+    redirect(HOME_ROUTE);
   };
 
   return (
     <div className='user-profile'>
-      <img className='user-profile__picture' alt='user' src={user.picture} />
+      <img className='user-profile__picture' alt='user' src={user.picture || DEFAULT_PICTURE} />
       <div className='user-profile__info'>
         <b>{user.firstName}</b>
         <p>{user.email}</p>

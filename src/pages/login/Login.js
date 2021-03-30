@@ -11,6 +11,7 @@ import {
   REQUIRED_EMAIL_ERROR,
   REQUIRED_PASSWORD_ERROR,
 } from '../../constants/errorsMessages';
+import { saveToLocalStorage, redirect } from '../../helpers/utils';
 
 const schema = Yup.object().shape({
   email: Yup.string().email(EMAIL_ERROR).required(REQUIRED_EMAIL_ERROR),
@@ -28,8 +29,12 @@ const Login = () => {
 
     setLoading(true);
     login(email, password)
-      .then(() => {
+      .then(data => {
+        const { auth_token, user } = data;
+        saveToLocalStorage('token', auth_token);
+        saveToLocalStorage('user', JSON.stringify(user));
         setLoading(false);
+        redirect(HOME_ROUTE);
       })
       .catch(() => setLoading(false));
   };

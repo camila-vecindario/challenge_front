@@ -3,17 +3,18 @@ import { useSelector } from 'react-redux';
 import { selectCurrentProject } from '../../../redux/selectors/projectsSelectors';
 import { projectTypes } from '../../../constants/projectsConstants';
 import { formatCurrency } from '../../../helpers/utils';
+import { DEFAULT_COVER } from '../../../constants/projectsConstants';
 
 const ProjectInfo = () => {
-  const project = useSelector(selectCurrentProject);
+  let project = useSelector(selectCurrentProject);
 
   const name = project?.name || '';
-  const type = projectTypes[project?.type] || {};
+  const type = projectTypes[project?.type_project] || {};
   const city = project?.location?.name || '';
   const address = project?.address || '';
   const price = project?.price || 0;
-  const builtArea = project?.builtArea || 0;
-  const privateArea = project?.privateArea || 0;
+  const builtArea = project?.built_area || 0;
+  const privateArea = project?.private_area || 0;
   const bathrooms = project?.bathrooms || 0;
 
   return (
@@ -50,7 +51,7 @@ const ProjectInfo = () => {
         </p>
       </div>
       <div>
-        <img alt={name} src={project?.cover} />
+        <img alt={name} src={project?.cover || DEFAULT_COVER} />
         <div className='project-info__row'>
           <div>
             <i className='fal fa-arrows fa-2x' />
@@ -60,11 +61,11 @@ const ProjectInfo = () => {
           </div>
           <div>
             <i className='fal fa-car fa-2x' />
-            <p>{project?.hasParking ? 'Incluido' : 'No incluido'}</p>
+            <p>{project?.has_parking ? 'Incluido' : 'No incluido'}</p>
           </div>
           <div>
             <i className='fal fa-sack fa-2x' />
-            <p>{project?.hasVis ? 'Aplica subsidio' : 'No aplica subsidio'}</p>
+            <p>{project?.has_vis ? 'Aplica subsidio' : 'No aplica subsidio'}</p>
           </div>
           <div>
             <i className='fal fa-toilet fa-2x' />

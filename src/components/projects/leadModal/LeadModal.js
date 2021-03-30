@@ -1,5 +1,5 @@
 import './LeadModal.scss';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Modal from '../../modal/Modal';
 import { useSelector } from 'react-redux';
 import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/userSelectors';
@@ -8,18 +8,20 @@ import { useForm } from 'react-hook-form';
 import Input from '../../inputs/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { createLead } from '../../../services/projects.services';
 
 const schema = Yup.object().shape({
-  firstName: Yup.string().required('El nombre es requerido.'),
-  lastName: Yup.string().required('El apellido es requerido.'),
+  first_name: Yup.string().required('El nombre es requerido.'),
+  last_name: Yup.string().required('El apellido es requerido.'),
   email: Yup.string()
     .email('La dirección de correo electrónico ingresada no es válida.')
     .required('El correo electrónico es requerido.'),
   phone: Yup.string().required('El teléfono es requerido.'),
 });
 
-const LeadModal = ({ visible, onClose }) => {
+const LeadModal = ({ visible, onClose, projectId }) => {
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -31,8 +33,27 @@ const LeadModal = ({ visible, onClose }) => {
 
   const showSuccess = role === CLIENT || success;
 
-  const onSubmit = () => {
-    setSuccess(true);
+  const handleCreateLead = useCallback(
+    data => {
+      setLoading(true);
+      createLead(projectId, data)
+        .then(() => {
+          setSuccess(true);
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    },
+    [projectId],
+  );
+
+  // useEffect(() => {
+  //   if (showSuccess && !loading) {
+  //     handleCreateLead(user);
+  //   }
+  // }, [showSuccess, handleCreateLead, user, loading]);
+
+  const onSubmit = data => {
+    handleCreateLead(data);
   };
 
   return (
@@ -42,11 +63,13 @@ const LeadModal = ({ visible, onClose }) => {
           <>
             <h3 className='lead-modal__title'>Déjanos tus datos y nos contactaremos contigo</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Input name='firstName' placeholder='Nombres' ref={register} errors={errors} />
-              <Input name='lastName' placeholder='Apellidos' ref={register} errors={errors} />
+              <Input name='first_name' placeholder='Nombres' ref={register} errors={errors} />
+              <Input name='last_name' placeholder='Apellidos' ref={register} errors={errors} />
               <Input name='email' placeholder='Correo' ref={register} errors={errors} />
               <Input name='phone' placeholder='Teléfono celular' ref={register} errors={errors} />
-              <button type='submit'>Enviar</button>
+              <button type='submit' disabled={loading}>
+                {loading ? 'Cargando...' : 'Enviar'}
+              </button>
             </form>
           </>
         )}

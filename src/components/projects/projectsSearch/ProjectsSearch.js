@@ -19,6 +19,7 @@ const ProjectsSearch = () => {
   };
 
   const handleProject = id => {
+    setOpen(false);
     history.push(`${PROJECTS_ROUTE}/${id}`);
   };
 

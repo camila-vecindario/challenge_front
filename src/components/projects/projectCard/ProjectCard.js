@@ -4,9 +4,8 @@ import { projectTypes } from '../../../constants/projectsConstants';
 import { useSelector } from 'react-redux';
 import { selectCurrentRole } from '../../../redux/selectors/userSelectors';
 import { ADMIN } from '../../../constants/userConstants';
+import { DEFAULT_COVER } from '../../../constants/projectsConstants';
 import LeadModal from '../leadModal/LeadModal';
-
-const DEFAULT_COVER = 'https://cdn.pixabay.com/photo/2015/03/26/09/41/condominium-690086_1280.jpg';
 
 const ProjectCard = ({ project }) => {
   const [showLead, setShowLead] = useState(false);
@@ -58,7 +57,7 @@ const ProjectCard = ({ project }) => {
           )}
         </div>
       </div>
-      <LeadModal visible={showLead} onClose={handleShowLead} />
+      {showLead && <LeadModal visible={showLead} onClose={handleShowLead} projectId={project.id} />}
     </>
   );
 };

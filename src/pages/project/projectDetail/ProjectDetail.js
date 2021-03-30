@@ -8,6 +8,7 @@ import { updateCurrentProject } from '../../../redux/slices/projectsSlice';
 import { PROJECT_LEADS_ROUTE } from '../../../constants/routes';
 import ProjectLeads from '../projectLeads/ProjectLeads';
 import ProjectInfo from '../projectInfo/projectInfo';
+import { findProjectById } from '../../../services/projects.services';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -21,6 +22,8 @@ const ProjectDetail = () => {
     const currentProject = projects.find(project => project.id.toString() === projectId);
     if (currentProject) {
       dispatch(updateCurrentProject(currentProject));
+    } else {
+      findProjectById(projectId).then(data => dispatch(updateCurrentProject(data)));
     }
   }, [projectId, projects, dispatch]);
 
