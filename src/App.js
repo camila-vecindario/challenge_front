@@ -25,11 +25,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const user = JSON.parse(getFromLocalStorage('user'));
-    const role = resolveUserRole();
+    if (getFromLocalStorage('user')) {
+      const user = JSON.parse(getFromLocalStorage('user'));
+      const role = resolveUserRole();
 
-    dispatch(logged(user));
-    dispatch(updateRole(role));
+      dispatch(logged(user));
+      dispatch(updateRole(role));
+    }
   }, [dispatch]);
 
   return (
