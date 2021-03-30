@@ -20,6 +20,7 @@ const schema = Yup.object().shape({
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -30,11 +31,15 @@ const Login = () => {
     setLoading(true);
     login(email, password)
       .then(data => {
-        const { auth_token, user } = data;
-        saveToLocalStorage('token', auth_token);
-        saveToLocalStorage('user', JSON.stringify(user));
+        const { auth_token, user, errors } = data;
+
+        if (!errors) {
+          saveToLocalStorage('token', auth_token);
+          saveToLocalStorage('user', JSON.stringify(user));
+          redirect(HOME_ROUTE);
+        }
+        setError(errors);
         setLoading(false);
-        redirect(HOME_ROUTE);
       })
       .catch(() => setLoading(false));
   };
@@ -50,8 +55,9 @@ const Login = () => {
             name='password'
             type='password'
             ref={register}
-            errors={errors}
+            errors={error}
           />
+          {error && <p className='login__error'>{error}</p>}
           <button className='login__submit' type='submit' disabled={loading}>
             {loading ? 'Cargando...' : 'Ingresar'}
           </button>
