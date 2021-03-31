@@ -1,9 +1,9 @@
 import './LeadModal.scss';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import Modal from '../../modal/Modal';
 import { useSelector } from 'react-redux';
 import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/userSelectors';
-import { HOST, CLIENT } from '../../../constants/userConstants';
+import { HOST } from '../../../constants/userConstants';
 import { useForm } from 'react-hook-form';
 import Input from '../../inputs/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -31,34 +31,21 @@ const LeadModal = ({ visible, onClose, projectId }) => {
 
   const showForm = role === HOST && !success;
 
-  const showSuccess = role === CLIENT || success;
-
-  const handleCreateLead = useCallback(
-    data => {
-      setLoading(true);
-      createLead(projectId, data)
-        .then(() => {
-          setSuccess(true);
-          setLoading(false);
-        })
-        .catch(() => setLoading(false));
-    },
-    [projectId],
-  );
-
-  // useEffect(() => {
-  //   if (showSuccess && !loading) {
-  //     handleCreateLead(user);
-  //   }
-  // }, [showSuccess, handleCreateLead, user, loading]);
+  const showSuccess = role !== HOST || success;
 
   const onSubmit = data => {
-    handleCreateLead(data);
+    createLead(projectId, data)
+      .then(() => {
+        setSuccess(true);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   };
 
   return (
     <Modal visible={visible} onClose={onClose}>
       <div className='lead-modal'>
+        <i className='fa fa-times lead-modal__close' onClick={onClose} />
         {showForm && (
           <>
             <h3 className='lead-modal__title'>Déjanos tus datos y nos contactaremos contigo</h3>

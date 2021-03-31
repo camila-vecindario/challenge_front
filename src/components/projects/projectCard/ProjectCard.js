@@ -2,17 +2,36 @@ import './ProjectCard.scss';
 import { useState } from 'react';
 import { projectTypes } from '../../../constants/projectsConstants';
 import { useSelector } from 'react-redux';
-import { selectCurrentRole } from '../../../redux/selectors/userSelectors';
-import { ADMIN } from '../../../constants/userConstants';
+import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/userSelectors';
+import { HOST } from '../../../constants/userConstants';
 import { DEFAULT_COVER } from '../../../constants/projectsConstants';
 import LeadModal from '../leadModal/LeadModal';
+import { createLead } from '../../../services/projects.services';
 
 const ProjectCard = ({ project }) => {
   const [showLead, setShowLead] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const role = useSelector(selectCurrentRole);
+  const user = useSelector(selectLoggedUser);
 
-  const handleShowLead = () => setShowLead(!showLead);
+  const handleShowLead = () => {
+    if (role === HOST) {
+      setShowLead(!showLead);
+    } else {
+      create();
+    }
+  };
+
+  const create = () => {
+    setLoading(true);
+    createLead(project.id, user)
+      .then(() => {
+        setLoading(false);
+        setShowLead(!showLead);
+      })
+      .catch(() => setLoading(false));
+  };
 
   return (
     <>
@@ -50,11 +69,9 @@ const ProjectCard = ({ project }) => {
               <p>{project.bathrooms}</p>
             </div>
           </div>
-          {role !== ADMIN && (
-            <button className='project-card__button' onClick={handleShowLead}>
-              Conoce más
-            </button>
-          )}
+          <button className='project-card__button' onClick={handleShowLead} disabled={loading}>
+            {loading ? 'enviando...' : 'Conoce más'}
+          </button>
         </div>
       </div>
       {showLead && <LeadModal visible={showLead} onClose={handleShowLead} projectId={project.id} />}

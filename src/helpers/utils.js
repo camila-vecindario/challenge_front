@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { ADMIN, CLIENT, HOST } from '../constants/userConstants';
 
 export const formatCurrency = (price = 0) => {
@@ -31,4 +32,8 @@ export const signOut = () => {
 
 export const redirect = (path = '') => {
   window.location.href = path;
+};
+
+export const prettyDate = date => {
+  return moment(date).format('ll');
 };

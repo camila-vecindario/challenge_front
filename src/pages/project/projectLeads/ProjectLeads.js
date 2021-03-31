@@ -1,37 +1,29 @@
 import './ProjectLeads.scss';
 import { useEffect, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectProjectLeads } from '../../../redux/selectors/projectsSelectors';
 import { loadLeads } from '../../../redux/slices/projectsSlice';
 import Table from '../../../components/table/Table';
+import { getProjectLeads } from '../../../services/projects.services';
+import { prettyDate } from '../../../helpers/utils';
 
 const ProjectLeads = () => {
+  const { projectId } = useParams();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const projectLeads = [
-      {
-        id: 1,
-        firstName: 'Juan',
-        lastName: 'Simulador',
-        email: 'juanitosimulando@gmail.com',
-        picture: 'https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427_1280.jpg',
-        phone: '321 745 6359',
-        createdAt: '13/03/21',
-      },
-      {
-        id: 2,
-        firstName: 'María Paula',
-        lastName: 'Pardo Rodríguez',
-        email: 'mapurodriguez@gmail.com',
-        picture: '',
-        phone: '314 345 2412',
-        createdAt: '14/03/21',
-      },
-    ];
+    const abortController = new AbortController();
 
-    dispatch(loadLeads(projectLeads));
-  }, [dispatch]);
+    getProjectLeads(projectId, abortController).then(
+      data => !data.error && dispatch(loadLeads(data)),
+    );
+
+    return function () {
+      abortController.abort();
+    };
+  }, [dispatch, projectId]);
 
   const leads = useSelector(selectProjectLeads);
 
@@ -45,14 +37,11 @@ const ProjectLeads = () => {
             <img src={lead.picture} alt={lead.firstName} className='project-leads__avatar' />
           ) : (
             <div className='project-leads__avatar'>
-              <span>
-                {lead.firstName.charAt(0).toUpperCase()}
-                {lead.lastName.charAt(0).toUpperCase()}
-              </span>
+              <span>{lead.fullName.charAt(0).toUpperCase()}</span>
             </div>
           ),
-          name: `${lead.firstName} ${lead.lastName}`,
-          createdAt: lead.createdAt,
+          name: `${lead.fullName}`,
+          createdAt: prettyDate(lead.created_at),
           email: lead.email,
           phone: lead.phone,
         };
