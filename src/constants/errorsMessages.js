@@ -7,6 +7,7 @@ export const REQUIRED_LAST_NAME_ERROR = 'El apellido es requerido.';
 export const REQUIRED_PHONE_ERROR = 'El teléfono es requerido.';
 export const REQUIRED_CONFIRM_PASSWORD_ERROR = 'Es necesario ingresar nuevamente la contraseña.';
 export const NOT_MATCH_PASSWORDS_ERROR = 'Las contraseñas no coinciden.';
+export const INVALID_PHONE_FORMAT = 'Le teñefono ingresado no es válido.';
 
 // PROJECTS > creation
 export const REQUIRED_PROJECT_NAME_ERROR = 'El nombre del proyecto es requerido.';

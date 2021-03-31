@@ -1,5 +1,5 @@
 import './Layout.scss';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { selectCurrentRole, selectLoggedUser } from '../../redux/selectors/userSelectors';
 import { useSelector } from 'react-redux';
 import { ADMIN, HOST, CLIENT } from '../../constants/userConstants';
@@ -13,9 +13,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <nav className='nav'>
-        <a href={HOME_ROUTE} className='nav__logo'>
+        <Link to={HOME_ROUTE} className='nav__logo'>
           Hola Pues
-        </a>
+        </Link>
         <div>
           <div className='nav__bar'>
             {currentRole === HOST || !user ? (

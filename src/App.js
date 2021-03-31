@@ -20,6 +20,8 @@ import UserAccount from './pages/user/userAccount/UserAccount';
 import { getFromLocalStorage, resolveUserRole } from './helpers/utils';
 import { useDispatch } from 'react-redux';
 import { logged, updateRole } from './redux/slices/userSlice';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +38,7 @@ function App() {
 
   return (
     <div className='App'>
+      <ReactNotification isMobile />
       <Router>
         <Switch>
           <Route exact path={HOME_ROUTE}>

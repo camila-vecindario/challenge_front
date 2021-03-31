@@ -1,4 +1,4 @@
-import { getData, postData } from '../helpers/client';
+import { getData, postData } from '../api/client';
 
 export async function getProjects(type, abortController) {
   const url = type < 0 ? '/projects' : `/projects?type=${type}`;

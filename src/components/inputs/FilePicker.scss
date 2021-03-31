@@ -1,0 +1,39 @@
+@import "src/variables";
+
+.file-picker {
+
+  input {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+  }
+
+  label {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: $color-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-dark;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+    margin-bottom: $margin-middle;
+    font-size: 0.7rem;
+
+    img {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}

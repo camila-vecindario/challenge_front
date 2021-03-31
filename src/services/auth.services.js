@@ -1,4 +1,4 @@
-import { postData } from '../helpers/client';
+import { postData } from '../api/client';
 
 export async function login(email = '', password = '') {
   const url = '/auth/login';

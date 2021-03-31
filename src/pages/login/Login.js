@@ -1,5 +1,6 @@
 import './Login.scss';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Input from '../../components/inputs/Input';
 import { login } from '../../services/auth.services';
 import { useForm } from 'react-hook-form';
@@ -65,11 +66,11 @@ const Login = () => {
       </div>
       <p>
         ¿No tienes una cuenta?{' '}
-        <a href={SIGN_UP__ROUTE} className='login__signup'>
+        <Link to={SIGN_UP__ROUTE} className='login__signup'>
           Regístrate
-        </a>
+        </Link>
       </p>
-      <a href={HOME_ROUTE}>Inicio</a>
+      <Link to={HOME_ROUTE}>Inicio</Link>
     </div>
   );
 };
