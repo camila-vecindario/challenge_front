@@ -37,3 +37,7 @@ export const redirect = (path = '') => {
 export const prettyDate = date => {
   return moment(date).format('ll');
 };
+
+export const prettyPrice = (price = 0) => {
+  return price / 1000000;
+};

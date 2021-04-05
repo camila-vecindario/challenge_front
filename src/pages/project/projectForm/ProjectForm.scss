@@ -5,6 +5,15 @@
   flex-direction: column;
   align-items: center;
 
+  b {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  &__row {
+    margin-bottom: $margin-middle;
+  }
+
   &__content {
     @include page;
 
@@ -24,8 +33,8 @@
     font-size: 0.8rem;
     cursor: pointer;
 
-    &:active {
-      transform: scale(0.9);
+    &--active {
+      transform: scale(0.8);
     }
 
     & > div {
@@ -43,6 +52,12 @@
         color: white;
       }
     }
+  }
+
+  &__emails {
+    padding-bottom: $padding-size;
+    padding-top: 0;
+    margin: 0;
   }
 
   &__submit {

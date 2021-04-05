@@ -1,8 +1,24 @@
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
 * {
   box-sizing: border-box;
   color: dimgray;
   margin: 0;
   font-family: 'Poppins', serif;
+  text-decoration: none !important;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+a {
+  color: $color-link;
+
+  &:hover {
+    color: $color-link;
+  }
 }
 
 html {

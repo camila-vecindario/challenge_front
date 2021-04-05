@@ -2,7 +2,7 @@ import './SignUp.scss';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Input from '../../components/inputs/Input';
-import ImagePicker from '../../components/inputs/ImagePicker';
+// import ImagePicker from '../../components/inputs/ImagePicker';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,6 +17,7 @@ import {
   REQUIRED_CONFIRM_PASSWORD_ERROR,
   NOT_MATCH_PASSWORDS_ERROR,
   INVALID_PHONE_FORMAT,
+  PASSWORD_LENGTH_ERROR,
 } from '../../constants/errorsMessages';
 import { store } from 'react-notifications-component';
 import { signUp } from '../../services/auth.services';
@@ -27,7 +28,9 @@ const schema = Yup.object().shape({
   last_name: Yup.string().required(REQUIRED_LAST_NAME_ERROR),
   email: Yup.string().email(EMAIL_ERROR).required(REQUIRED_EMAIL_ERROR),
   phone: Yup.string().required(REQUIRED_PHONE_ERROR).matches(phoneRegex, INVALID_PHONE_FORMAT),
-  password: Yup.string().required(REQUIRED_PASSWORD_ERROR),
+  password: Yup.string()
+    .required(REQUIRED_PASSWORD_ERROR)
+    .test('len', PASSWORD_LENGTH_ERROR, val => val.length >= 8),
   password_confirmation: Yup.string()
     .required(REQUIRED_CONFIRM_PASSWORD_ERROR)
     .oneOf([Yup.ref('password')], NOT_MATCH_PASSWORDS_ERROR),
@@ -71,11 +74,11 @@ const SignUp = () => {
 
   return (
     <div className='signup'>
-      <h1>Registro de cuenta :D</h1>
+      <h3>Registro de cuenta :D</h3>
       <p>¡Hola! Únete a nosotros.</p>
       <div className='signup__form'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <ImagePicker />
+          {/*<ImagePicker />*/}
           <Input placeholder='Nombre' name='first_name' ref={register} errors={errors} />
           <Input placeholder='Apellido' name='last_name' ref={register} errors={errors} />
           <Input placeholder='Correo' name='email' ref={register} errors={errors} />

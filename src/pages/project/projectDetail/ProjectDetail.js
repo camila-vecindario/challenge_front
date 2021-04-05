@@ -31,7 +31,7 @@ const ProjectDetail = () => {
     <Layout>
       <div className='project-detail'>
         <div className='project-detail__menu'>
-          <h3>{project?.name}</h3>
+          <h5>{project?.name}</h5>
           <MenuItem to={url} title='Información general' icon='project-diagram' />
           <MenuItem to={`${url}${PROJECT_LEADS_ROUTE}`} title='Leads' icon='users' />
         </div>

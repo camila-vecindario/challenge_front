@@ -9,14 +9,22 @@ import Input from '../../inputs/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { createLead } from '../../../services/projects.services';
+import {
+  EMAIL_ERROR,
+  INVALID_PHONE_FORMAT,
+  REQUIRED_EMAIL_ERROR,
+  REQUIRED_PHONE_ERROR,
+  REQUIRED_FIRST_NAME_ERROR,
+  REQUIRED_LAST_NAME_ERROR,
+} from '../../../constants/errorsMessages';
+import { phoneRegex } from '../../../helpers/regex';
+import { store } from 'react-notifications-component';
 
 const schema = Yup.object().shape({
-  first_name: Yup.string().required('El nombre es requerido.'),
-  last_name: Yup.string().required('El apellido es requerido.'),
-  email: Yup.string()
-    .email('La dirección de correo electrónico ingresada no es válida.')
-    .required('El correo electrónico es requerido.'),
-  phone: Yup.string().required('El teléfono es requerido.'),
+  first_name: Yup.string().required(REQUIRED_FIRST_NAME_ERROR),
+  last_name: Yup.string().required(REQUIRED_LAST_NAME_ERROR),
+  email: Yup.string().email(EMAIL_ERROR).required(REQUIRED_EMAIL_ERROR),
+  phone: Yup.string().required(REQUIRED_PHONE_ERROR).matches(phoneRegex, INVALID_PHONE_FORMAT),
 });
 
 const LeadModal = ({ visible, onClose, projectId }) => {
@@ -34,13 +42,26 @@ const LeadModal = ({ visible, onClose, projectId }) => {
   const showSuccess = role !== HOST || success;
 
   const onSubmit = data => {
+    setLoading(true);
     createLead(projectId, data)
       .then(() => {
         setSuccess(true);
-        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .finally(() => setLoading(false))
+      .catch(() => openError());
   };
+
+  function openError() {
+    store.addNotification({
+      message: 'Ha ocurrido un error al generar el lead',
+      type: 'danger',
+      insert: 'top',
+      container: 'top-right',
+      dismiss: {
+        duration: 1500,
+      },
+    });
+  }
 
   return (
     <Modal visible={visible} onClose={onClose}>
@@ -48,7 +69,7 @@ const LeadModal = ({ visible, onClose, projectId }) => {
         <i className='fa fa-times lead-modal__close' onClick={onClose} />
         {showForm && (
           <>
-            <h3 className='lead-modal__title'>Déjanos tus datos y nos contactaremos contigo</h3>
+            <h4 className='lead-modal__title'>Déjanos tus datos y nos contactaremos contigo</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Input name='first_name' placeholder='Nombres' ref={register} errors={errors} />
               <Input name='last_name' placeholder='Apellidos' ref={register} errors={errors} />

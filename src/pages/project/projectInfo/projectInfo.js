@@ -16,6 +16,7 @@ const ProjectInfo = () => {
   const builtArea = project?.built_area || 0;
   const privateArea = project?.private_area || 0;
   const bathrooms = project?.bathrooms || 0;
+  const emails = project?.sales_room_emails || '';
 
   return (
     <div className='project-info'>
@@ -29,6 +30,15 @@ const ProjectInfo = () => {
         <p>
           <b>Nombre: </b>
           {name}
+        </p>
+        <p>
+          <b>Salas de ventas: </b>
+          {emails.split(',').map((email, i) => (
+            <div key={`sales-room_email-${i}`} className='project-info__email'>
+              <div />
+              {email}
+            </div>
+          ))}
         </p>
         <p>
           <b>Ubicación: </b>

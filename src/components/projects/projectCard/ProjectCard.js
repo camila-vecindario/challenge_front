@@ -1,5 +1,5 @@
 import './ProjectCard.scss';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { projectTypes } from '../../../constants/projectsConstants';
 import { useSelector } from 'react-redux';
 import { selectCurrentRole, selectLoggedUser } from '../../../redux/selectors/userSelectors';
@@ -7,6 +7,7 @@ import { HOST } from '../../../constants/userConstants';
 import { DEFAULT_COVER } from '../../../constants/projectsConstants';
 import LeadModal from '../leadModal/LeadModal';
 import { createLead } from '../../../services/projects.services';
+import { prettyPrice } from '../../../helpers/utils';
 
 const ProjectCard = ({ project }) => {
   const [showLead, setShowLead] = useState(false);
@@ -17,21 +18,20 @@ const ProjectCard = ({ project }) => {
 
   const handleShowLead = () => {
     if (role === HOST) {
-      setShowLead(!showLead);
+      setShowLead(true);
     } else {
       create();
     }
   };
 
-  const create = () => {
+  const create = useCallback(() => {
     setLoading(true);
     createLead(project.id, user)
       .then(() => {
-        setLoading(false);
-        setShowLead(!showLead);
+        setShowLead(true);
       })
-      .catch(() => setLoading(false));
-  };
+      .finally(() => setLoading(false));
+  }, [project, user]);
 
   return (
     <>
@@ -48,6 +48,10 @@ const ProjectCard = ({ project }) => {
           alt={project.name}
           src={project.cover || DEFAULT_COVER}
         />
+        <div className='project-card__price-wrapper'>
+          <p>Precio final desde: </p>
+          <h4 className='project-card__price'>{prettyPrice(project.price)} millones*</h4>
+        </div>
         <div className='project-card__content'>
           <div>
             <div className='project-card__feat'>
@@ -74,7 +78,9 @@ const ProjectCard = ({ project }) => {
           </button>
         </div>
       </div>
-      {showLead && <LeadModal visible={showLead} onClose={handleShowLead} projectId={project.id} />}
+      {showLead && (
+        <LeadModal visible={showLead} onClose={() => setShowLead(false)} projectId={project.id} />
+      )}
     </>
   );
 };

@@ -39,6 +39,23 @@
     margin-top: $margin-large;
   }
 
+  &__price-wrapper {
+    position: relative;
+    text-align: left;
+    padding: 0 $padding-small;
+    top: -60px;
+
+    p {
+      color: $color-primary;
+      font-size: 0.8rem;
+    }
+
+    h4 {
+      font-weight: bolder;
+      color: white;
+    }
+  }
+
   &__content {
     padding: $padding-small $padding-size $padding-size $padding-size;
 

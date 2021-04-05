@@ -7,29 +7,16 @@ import { Popover } from 'react-tiny-popover';
 import { userRoles, DEFAULT_PICTURE } from '../../../constants/userConstants';
 import { logOut } from '../../../redux/slices/userSlice';
 import ProjectsSearch from '../../projects/projectsSearch/ProjectsSearch';
-import { ACCOUNT_ROUTE, HOME_ROUTE } from '../../../constants/routes';
+import { ACCOUNT_ROUTE, LOGIN_ROUTE } from '../../../constants/routes';
 import { signOut, redirect } from '../../../helpers/utils';
 
 const UserProfile = () => {
-  const history = useHistory();
   const [openOptions, setOpenOptions] = useState(false);
-
-  const dispatch = useDispatch();
 
   const user = useSelector(selectLoggedUser);
   const role = useSelector(selectCurrentRole);
 
   const handleOpenOptions = () => setOpenOptions(!openOptions);
-
-  const handleAccount = () => {
-    history.push(ACCOUNT_ROUTE);
-  };
-
-  const handleSignOut = () => {
-    dispatch(logOut());
-    signOut();
-    redirect(HOME_ROUTE);
-  };
 
   return (
     <div className='user-profile'>
@@ -45,19 +32,12 @@ const UserProfile = () => {
         align='end'
         content={
           <div className='user-profile__options' onClick={handleOpenOptions}>
-            <div className='user-profile__option' onClick={handleAccount}>
-              <i className='fal fa-user-circle fa-1x' />
-              <p>Cuenta</p>
-            </div>
-            <div className='user-profile__option' onClick={handleSignOut}>
-              <i className='fal fa-sign-out-alt fa-1x' />
-              <p>Cerrar sesión</p>
-            </div>
+            <UserOptions />
           </div>
         }
         onClickOutside={handleOpenOptions}
       >
-        <div>
+        <div className='large-items'>
           <i
             className={`fa ${openOptions ? 'fa-chevron-up' : 'fa-chevron-down'} user-profile__icon`}
             onClick={handleOpenOptions}
@@ -68,19 +48,47 @@ const UserProfile = () => {
   );
 };
 
-export const AdminBar = () => {
+export const UserOptions = () => {
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const handleAccount = () => {
+    history.push(ACCOUNT_ROUTE);
+  };
+
+  const handleSignOut = () => {
+    redirect(LOGIN_ROUTE);
+    dispatch(logOut());
+    signOut();
+  };
+
   return (
-    <div className='admin-bar'>
-      <ProjectsSearch />
-      <UserProfile />
+    <div>
+      <div className='user-profile__option' onClick={handleAccount}>
+        <i className='fal fa-user-circle fa-1x' />
+        <p>Cuenta</p>
+      </div>
+      <div className='user-profile__option' onClick={handleSignOut}>
+        <i className='fal fa-sign-out-alt fa-1x' />
+        <p>Cerrar sesión</p>
+      </div>
     </div>
   );
 };
 
-export const ClientBar = () => {
+export const AdminBar = () => {
   return (
     <div className='admin-bar'>
-      <ProjectsSearch />
+      <div className='large-items'>
+        <ProjectsSearch />
+      </div>
+      <div className='small-items'>
+        <UserOptions />
+      </div>
+      <div className='small-items'>
+        <ProjectsSearch />
+      </div>
       <UserProfile />
     </div>
   );

@@ -1,5 +1,9 @@
 import { getData, postData } from '../api/client';
 
+export async function createProject(body) {
+  return postData('/projects', body);
+}
+
 export async function getProjects(type, abortController) {
   const url = type < 0 ? '/projects' : `/projects?type=${type}`;
   return getData(url, abortController);

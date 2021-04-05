@@ -9,12 +9,32 @@
   justify-content: space-between;
   padding: $padding-size;
 
+  &__toggle {
+    outline: none !important;
+    border: none !important;
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  &__bar {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: $padding-size;
+  }
+
   &__logo {
     text-decoration: none;
     color: $color-text-dark;
     font-weight: bold;
     font-size: 1.4rem;
     @include active-btn;
+
+    &__hover {
+      color: $color-link;
+    }
   }
 
   &__btn {
@@ -36,7 +56,7 @@
     }
   }
 
-  &__icon {
+  &__collapse {
     display: none;
     cursor: pointer;
   }
@@ -44,16 +64,4 @@
 
 .layout__content {
   padding: $padding-size;
-}
-
-@media screen and (max-width: 700px){
-  .nav {
-    &__btn, &__bar {
-      display: none;
-    }
-
-    &__icon {
-      display: block;
-    }
-  }
 }

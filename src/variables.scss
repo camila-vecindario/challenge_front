@@ -17,7 +17,7 @@ $margin-small: 10px;
 $margin-middle: 20px;
 $margin-large: 25px;
 
-$min-width: 300px;
+$min-width: 350px;
 
 @mixin active-btn {
   &:active {
@@ -47,5 +47,6 @@ $min-width: 300px;
   &:disabled {
     background-color: $color-gray;
     color: $color-text-dark;
+    cursor: default;
   }
 }

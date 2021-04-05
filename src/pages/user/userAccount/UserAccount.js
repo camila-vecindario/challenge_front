@@ -15,21 +15,25 @@ const UserAccount = () => {
   return (
     <Layout>
       <div className='user-account'>
-        {picture ? (
-          <img src={picture} alt={firstName} className='user-account__picture' />
-        ) : (
-          <div className='user-account__picture'>
-            <h1>
-              {firstName.charAt(0).toUpperCase()}
-              {lastName.charAt(0).toUpperCase()}
-            </h1>
-          </div>
-        )}
-        <h3>
-          {firstName} {lastName}
-        </h3>
-        <h3>{email}</h3>
-        <h3>{phone}</h3>
+        <div className='user-account__wrapper'>
+          {picture ? (
+            <img src={picture} alt={firstName} className='user-account__picture' />
+          ) : (
+            <div className='user-account__picture'>
+              <h1>
+                {firstName.charAt(0).toUpperCase()}
+                {lastName.charAt(0).toUpperCase()}
+              </h1>
+            </div>
+          )}
+          <h6>
+            {firstName} {lastName}
+          </h6>
+          <b>Correo:</b>
+          <h6>{email}</h6>
+          <b>Teléfono:</b>
+          <h6>{phone}</h6>
+        </div>
       </div>
     </Layout>
   );

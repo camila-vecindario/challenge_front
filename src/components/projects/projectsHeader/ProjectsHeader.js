@@ -30,7 +30,7 @@ const ProjectsHeader = () => {
             }}
           >
             <i
-              className={`fal ${projectTypes[type].icon} fa-2x`}
+              className={`fal ${projectTypes[type].icon}`}
               style={{ color: isCurrent ? 'white' : projectTypes[type].color }}
             />
             <b>{projectTypes[type].value}</b>

@@ -12,7 +12,7 @@ export const projectsSlice = createSlice({
   },
   reducers: {
     load: (state, action) => {
-      state.list = action.payload;
+      state.list = action.payload.filter(project => project.price > 0);
     },
     updateFilter: (state, action) => {
       state.filter = action.payload;

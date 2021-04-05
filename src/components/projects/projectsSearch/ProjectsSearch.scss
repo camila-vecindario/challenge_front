@@ -7,7 +7,9 @@
   display: flex;
   align-items: center;
   max-width: 150px;
+  word-wrap: break-word;
   cursor: pointer;
+  margin: $margin-small 0;
 
   & > p {
     overflow: hidden;
@@ -22,16 +24,19 @@
   &__content {
     background-color: white;
     box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    padding-bottom: $padding-small;
 
     & hr {
       background-color: $color-gray;
       border-width: 0;
       height: 1px;
+      margin: $margin-small 0;
     }
   }
 
   &__section {
-    padding: $padding-small;
+    padding: 0 $padding-small;
     font-size: 0.8rem;
 
     & > input {
@@ -56,6 +61,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding-top: 5px;
 
     &:hover i, &:hover b {
       color: $color-link;

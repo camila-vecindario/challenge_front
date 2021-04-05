@@ -3,27 +3,23 @@
 .project-detail {
   height: 100%;
   display: flex;
-  @include page;
 
   &__menu {
     flex: 1;
-    min-width: 200px;
+    min-width: 150px;
     max-width: 300px;
     text-align: left;
     border-right: $color-gray 1px solid;
-
-    & > h3 {
-      margin-bottom: $margin-small;
-    }
   }
 
   &__menu-item {
 
     & > a {
-      padding: $padding-small $padding-size;
+      padding: $padding-small;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       text-decoration: none;
       text-align: right;
     }

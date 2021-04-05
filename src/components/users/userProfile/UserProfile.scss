@@ -54,8 +54,31 @@
 .admin-bar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-start;
 
   & > div:last-child {
     margin-left: $margin-large;
   }
+}
+
+.small-items {
+  display: none;
+}
+
+@media screen and (max-width: 770px){
+  .large-items {
+    display: none;
+  }
+
+  .small-items {
+    display: block;
+  }
+
+  .admin-bar {
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+
 }
