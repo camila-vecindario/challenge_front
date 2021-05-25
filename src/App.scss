@@ -1,0 +1,10 @@
+@import "variables";
+@import "~bulma/sass/utilities/all";
+@import "~bulma/sass/components/modal";
+
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: white;
+  min-width: $min-width;
+}

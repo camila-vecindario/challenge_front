@@ -1,0 +1,95 @@
+@import "src/variables";
+
+.project-info {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  padding: $padding-small;
+  max-width: 1000px;
+
+  & p {
+    margin-bottom: 5px;
+  }
+
+  &__content {
+    text-align: left;
+    padding: 0 $padding-size;
+  }
+
+  &__type {
+    text-align: center;
+    width: auto;
+    display: table;
+    margin-bottom: 5px;
+
+    & > div {
+      background-color: #21c2de;
+      width: 80px;
+      height: 70px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+
+      & > i {
+        color: white;
+      }
+    }
+  }
+
+  & img {
+    width: 40vw;
+    height: 20vw;
+    min-width: 200px;
+    min-height: 100px;
+    max-width: 500px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    margin: $margin-small 0;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+
+    & div {
+      margin: $margin-small;
+      max-width: 100px;
+
+      & > i {
+        color: $color-link;
+      }
+
+      & > p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  &__email {
+    background-color: $color-text-light;
+    color: $color-text-dark;
+    padding: 2px 10px;
+    text-align: center;
+    margin: 4px;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    text-align: left;
+    position: relative;
+
+    div {
+      background-color: $color-link;
+      width: 4px;
+      height: 100%;
+      position: absolute;
+      border-radius: 2px;
+      left: 0;
+    }
+  }
+}

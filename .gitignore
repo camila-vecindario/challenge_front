@@ -25,3 +25,8 @@ yarn-error.log*
 
 # IDE
 .idea
+
+#sass
+.sass-cache
+*.css
+*.css.map

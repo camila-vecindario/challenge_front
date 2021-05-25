@@ -1,0 +1,40 @@
+@import "src/variables";
+
+.project-detail {
+  height: 100%;
+  display: flex;
+
+  &__menu {
+    flex: 1;
+    min-width: 150px;
+    max-width: 300px;
+    text-align: left;
+    border-right: $color-gray 1px solid;
+  }
+
+  &__menu-item {
+
+    & > a {
+      padding: $padding-small;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      text-decoration: none;
+      text-align: right;
+    }
+  }
+
+  &__active {
+    & > i, & > p {
+      color: $color-link !important;
+    }
+  }
+
+  &__content {
+    flex: 3;
+    min-width: $min-width;
+    padding: $padding-size;
+    background-color: lighten($color-dark, 83%);
+  }
+}

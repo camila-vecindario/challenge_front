@@ -1,0 +1,24 @@
+@import "src/variables";
+
+.signup {
+  @include page;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5vh;
+
+  &__form {
+    margin: $margin-middle;
+    width: 40vw;
+    min-width: $min-width;
+  }
+
+  &__submit {
+    @include button;
+    background-color: $color-tertiary;
+    color: $color-dark;
+    min-width: $min-width;
+    width: 100%;
+  }
+}

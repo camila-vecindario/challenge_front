@@ -1,0 +1,58 @@
+@import "src/variables";
+
+.projects-header {
+  padding: $padding-small;
+  display: flex;
+  justify-content: center;
+  justify-items: start;
+  flex-wrap: wrap;
+
+  &__button {
+    width: 46%;
+    background-color: white;
+    outline: none;
+    border: lightgray 1px solid;
+    padding: $padding-small;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    max-width: 150px;
+    margin: 0 5px $margin-small 5px;
+
+    & > i {
+      margin-right: $margin-small;
+      color: $color-text-dark;
+      font-size: 0.9rem;
+    }
+
+    & > b {
+      color: $color-text-dark;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    @include active-btn;
+
+    &:hover {
+      border: none;
+    }
+
+    &--active {
+      transform: scale(0.90);
+      border: none;
+
+      i, b {
+        color: white;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $min-width){
+  .projects-header {
+
+    //&__button {
+    //  width: 100%;
+    //}
+  }
+}

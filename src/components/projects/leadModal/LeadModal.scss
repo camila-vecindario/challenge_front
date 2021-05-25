@@ -1,0 +1,44 @@
+@import "src/variables";
+
+.lead-modal {
+  background-color: white;
+  border-radius: 5px;
+  padding: $padding-size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__close {
+    align-self: flex-end;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  & > form {
+    width: 80%;
+  }
+
+  &--new {
+    background-color: lighten($color-primary, 20%);
+  }
+
+  &__img {
+    width: 25%;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    color: $color-text-dark;
+
+    &:last-of-type {
+      margin-bottom: $margin-small;
+    }
+  }
+
+  button[type="submit"] {
+    @include button;
+
+    background-color: $color-primary;
+  }
+}

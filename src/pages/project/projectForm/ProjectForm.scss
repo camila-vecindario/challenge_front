@@ -1,0 +1,70 @@
+@import "src/variables";
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  b {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  &__row {
+    margin-bottom: $margin-middle;
+  }
+
+  &__content {
+    @include page;
+
+    min-width: 400px;
+    text-align: left;
+  }
+
+  &__types {
+    display: flex;
+    justify-content: space-evenly;
+    padding: $padding-small;
+  }
+
+  &__type {
+    margin: 0 $margin-small;
+    text-align: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+
+    &--active {
+      transform: scale(0.8);
+    }
+
+    & > div {
+      background-color: #f8d408;
+      width: 70px;
+      height: 60px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: $padding-size;
+
+      & > i {
+        color: white;
+      }
+    }
+  }
+
+  &__emails {
+    padding-bottom: $padding-size;
+    padding-top: 0;
+    margin: 0;
+  }
+
+  &__submit {
+    @include button;
+
+    background-color: gray;
+    color: white;
+    width: 100%;
+  }
+}

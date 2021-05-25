@@ -1,0 +1,34 @@
+@import "src/variables";
+
+.project-leads {
+  padding: $padding-small;
+
+  &__score {
+    background-color: white;
+    display: inline-block;
+    min-width: 120px;
+    padding: $padding-small;
+    border-radius: 7px;
+    margin: $padding-size;
+  }
+
+  &__content {
+    max-width: 1200px;
+  }
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    background-color: $color-secondary;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: $margin-small 0;
+
+    & > span {
+      color: white;
+    }
+  }
+}

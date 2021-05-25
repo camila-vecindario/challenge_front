@@ -1,0 +1,48 @@
+@import "src/variables";
+
+.user-account {
+  @include page;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: $padding-size;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    b {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__picture {
+    width: 20vw;
+    height: 20vw;
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: $color-link;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $margin-middle;
+    align-self: center;
+
+    & > h1 {
+      color: white;
+      font-size: 3rem;
+      margin-top: $margin-small;
+    }
+  }
+
+  & h3 {
+    margin-bottom: $margin-middle;
+  }
+}
